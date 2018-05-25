@@ -4,6 +4,66 @@
 
 namespace org.hackerton
 
+participant Doctor identified by DoctorID {
+  o String DoctorID
+  --> Hospital hospital
+}
+participant Requester identified by RequesterID {
+  o String RequesterID
+  o Double x
+  o Double y
+}
+
+participant Hospital identified by HospitalID {
+  o String HospitalID
+}
+
+participant EmergencyCar identified by CarID {
+  o String CarID
+  o Double x
+  o Double y
+  o Boolean isOccupied
+  --> Hospital owner
+}
+
+participant EmergencyBed identified by BedID {
+  o String BedID
+  o Double x
+  o Double y
+  o Boolean isOccupied
+  --> Hospital owner
+}
+
+asset Schedule identified by ScheduleID {
+  o String ScheduleID
+  --> Doctor doctor
+}
+
+asset Patient identified by PatientID {
+  o String PatientID
+  --> Requester requester
+  o Double x
+  o Double y
+}
+
+transaction requestEmergencyCar {
+  --> Patient patient
+  --> Requester requester
+  o Double x
+  o Double y
+}
+
+transaction requestEmergencyBed {
+  --> Patient patient
+  --> Requester requester
+  o Double x
+  o Double y
+}
+
+transaction bedOccupiedComplete {
+  --> EmergencyBed bed
+}
+
 participant SampleParticipant identified by participantId {
   o String participantId
   o String firstName
