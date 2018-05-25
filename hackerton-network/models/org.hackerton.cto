@@ -60,6 +60,11 @@ event EmergencyCarOccupied {
   o Double patient_y
 }
 
+transaction cancelEmegencyCarRequest {
+  o String requestEmergencyCarID
+  --> Requester requester
+}
+
 transaction requestEmergencyBed {
   --> Patient patient
   --> Requester requester
