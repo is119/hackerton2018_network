@@ -1,6 +1,4 @@
-/**
- * Sample access control list.
- */
+/*
 rule EverybodyCanReadEverything {
     description: "Allow all participants read access to all resources"
     participant: "org.hackerton.SampleParticipant"
@@ -25,7 +23,7 @@ rule OwnerHasFullAccessToTheirAssets {
     condition: (r.owner.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
-
+*/
 rule SystemACL {
   description:  "System ACL to permit all access"
   participant: "org.hyperledger.composer.system.Participant"
