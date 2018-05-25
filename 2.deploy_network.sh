@@ -14,7 +14,6 @@ ADMIN_SECRET=
 composer archive create --archiveFile $NETWORK_NAME@$NETWORK_VERSION.bna \
  --sourceType dir --sourceName $NETWORK_NAME
 
-
 # 인자 start -> 네트워크
 if [ $1 -eq 'start' ]; then
     # 물리 네트워크에 비즈니스 카드 설치
