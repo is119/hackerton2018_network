@@ -79,8 +79,6 @@ event EmergencyBedOccupiedComplete{
   --> EmergencyBed bed
 }
 
-
-
 participant SampleParticipant identified by participantId {
   o String participantId
   o String firstName
