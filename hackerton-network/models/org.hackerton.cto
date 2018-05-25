@@ -53,6 +53,13 @@ transaction requestEmergencyCar {
   o Double y
 }
 
+event EmergencyCarOccupied {
+  --> Patient patient
+  --> EmergencyCar car
+  o Double patient_x
+  o Double patient_y
+}
+
 transaction requestEmergencyBed {
   --> Patient patient
   --> Requester requester
@@ -60,9 +67,19 @@ transaction requestEmergencyBed {
   o Double y
 }
 
+event EmergencyBedOccupied{
+  --> EmergencyBed bed
+}
+
 transaction bedOccupiedComplete {
   --> EmergencyBed bed
 }
+
+event EmergencyBedOccupiedComplete{
+  --> EmergencyBed bed
+}
+
+
 
 participant SampleParticipant identified by participantId {
   o String participantId
