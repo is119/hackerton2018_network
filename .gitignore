@@ -1,2 +1,5 @@
 hackerton-physical-network/channel-artifacts
 hackerton-physical-network/crypto-config
+*_sk
+*.pem
+*.card
