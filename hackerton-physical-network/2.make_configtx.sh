@@ -1,16 +1,18 @@
 #!/bin/bash
 
 CHANNEL_NAME=mychannel
+GENESIS_NAME=TwoOrgsOrdererGenesis
+PRIV_CHANNEL_NAME=TwoOrgsChannel
 
 #Create Genesis Block
-configtxgen -profile TwoOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
+configtxgen -profile $GENESIS_NAME -outputBlock ./channel-artifacts/genesis.block
 
 #Create Channel Tx
-configtxgen -profile TwoOrgsChannel -outputCreateChannelTx \
+configtxgen -profile PRIV_CHANNEL_NAME -outputCreateChannelTx \
     ./channel-artifacts/channel.tx -channelID $CHANNEL_NAME
 
 #Create Anchor Peers
-configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate \
+configtxgen -profile PRIV_CHANNEL_NAME -outputAnchorPeersUpdate \
     ./channel-artifacts/Org1MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org1MSP
-configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate \
+configtxgen -profile PRIV_CHANNEL_NAME -outputAnchorPeersUpdate \
     ./channel-artifacts/Org2MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org2MSP
