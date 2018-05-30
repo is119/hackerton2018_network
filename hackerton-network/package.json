@@ -1,6 +1,6 @@
 {
   "name": "hackerton-network",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Docker-EmergencyRoom-Car-Requester Network",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/hackerton-network.bna",
@@ -12,18 +12,18 @@
   "email": "abc7988se@naver.com",
   "license": "Apache-2.0",
   "devDependencies": {
-    "composer-admin": "^0.19.0",
-    "composer-cli": "^0.19.0",
-    "composer-client": "^0.19.0",
-    "composer-common": "^0.19.0",
-    "composer-connector-embedded": "^0.19.0",
-    "composer-cucumber-steps": "^0.19.0",
     "chai": "latest",
     "chai-as-promised": "latest",
+    "composer-admin": "^0.19.0-0",
+    "composer-cli": "^0.19.0-0",
+    "composer-client": "^0.19.0-0",
+    "composer-common": "^0.19.0-0",
+    "composer-connector-embedded": "^0.19.0-0",
     "cucumber": "^2.2.0",
     "eslint": "latest",
-    "nyc": "latest",
     "mkdirp": "latest",
-    "mocha": "latest"
-  }
+    "mocha": "latest",
+    "nyc": "latest"
+  },
+  "dependencies": {}
 }

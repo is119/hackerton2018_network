@@ -19,10 +19,11 @@
 
 /**
  * Sample transaction
- * @param {org.hackerton.SampleTransaction} sampleTransaction
+ * @param {org.hackerton.bedOccupiedComplete} bedOccupiedComplete
  * @transaction
  */
-async function sampleTransaction(tx) {
+/*
+ async function sampleTransaction(tx) {
     // Save the old value of the asset.
     const oldValue = tx.asset.value;
 
@@ -41,3 +42,4 @@ async function sampleTransaction(tx) {
     event.newValue = tx.newValue;
     emit(event);
 }
+*/
