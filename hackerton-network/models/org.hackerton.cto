@@ -16,6 +16,7 @@ participant Requester identified by RequesterID {
 
 participant Hospital identified by HospitalID {
   o String HospitalID
+  o String name
 }
 
 participant EmergencyCar identified by CarID {

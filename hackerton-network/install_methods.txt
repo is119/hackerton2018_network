@@ -1,0 +1,28 @@
+ # create CA with connection.json
+ 1626  composer card create -f ca.card -p connection.json -u admin -s secret
+ 1627  composer card import -f ca.card -c ca
+
+#make a credential of CA
+composer identity request --card ca --path ./credentials
+
+# create network Admin card
+ 1628  composer card create -f adminCard.card -p connection.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+ 1631  composer card delete -c adminCard
+ 1632  composer card import -f adminCard.card -c adminCard
+
+# deploy network
+
+ 1633  composer archive create -t dir -n .
+ 1634  composer network install -c adminCard -a carauction-network@0.2.4.bna
+ 1635  composer network start -c adminCard -n carauction-network -V 0.2.4 -A admin -C ./credentials/admin-pub.pem -f delete.card
+ 1636  rm delete.card
+
+# deploy network 
+ 1640  composer archive create -t dir -n .
+ 1641  composer network install -c adminCard -a hackerton-network@0.0.2.bna
+ 1642  composer network start -c adminCard -n hackerton-network -V 0.0.2 -A admin -C /tmp/example/packages/carauction-network/credentials/admin-pub.pem -f delete.card
+ 1643  composer card create -n hackerton-network -p connection.json -u admin -c /tmp/credentials/admin-pub.pem -k /tmp/credentials/admin-priv.pem
+ 1644  composer card import -f admin@hackerton-network.card
+ 1645  composer card delete -c admin@hackerton-network
+ 1646  composer card import -f admin@hackerton-network.card
+ 1649  composer-rest-server -c admin@hackerton-network -t
