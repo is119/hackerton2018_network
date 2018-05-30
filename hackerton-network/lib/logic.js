@@ -18,28 +18,49 @@
  */
 
 /**
- * Sample transaction
- * @param {org.hackerton.bedOccupiedComplete} bedOccupiedComplete
+ * 구급차 요청 트랜잭션
+ * @param {org.hackerton.requestEmergencyBed} requestEmergencyBed
  * @transaction
  */
-/*
- async function sampleTransaction(tx) {
-    // Save the old value of the asset.
-    const oldValue = tx.asset.value;
+async function requestEmergencyBed(tx) {
+    let x = tx.x;
+    let y = tx.y;
+    let results = await query('FindEmergencyBed');
 
-    // Update the asset with the new value.
-    tx.asset.value = tx.newValue;
+    let found = find_nearest_emergency_bed(x, y);
+    if (!found) {
+        throw new Error('좌석을 찾을 수 없음!');
+    }
 
-    // Get the asset registry for the asset.
-    const assetRegistry = await getAssetRegistry('org.hackerton.SampleAsset');
-    // Update the asset in the asset registry.
-    await assetRegistry.update(tx.asset);
+    let event = getFactory().newEvent('org.hackerton', 'EmergencyCarOccupied');
+    event.bed = found.BedID;
 
-    // Emit an event for the modified asset.
-    let event = getFactory().newEvent('org.hackerton', 'SampleEvent');
-    event.asset = tx.asset;
-    event.oldValue = oldValue;
-    event.newValue = tx.newValue;
     emit(event);
 }
-*/
+/**
+ *
+ **/
+function find_nearest_emergency_bed(list, x, y) {
+    var result = false;
+    for (let n = 0; n < list.length; n++) {
+        result = list[n]
+    }
+    return result;
+}
+
+/**
+ * 자율주행차 요청 트랜잭션
+ * @param {org.hackerton.requestEmergencyCar} requestEmergencyCar
+ * @transaction
+ */
+function requestEmergencyCar(tx) {
+    let x = tx.x;
+    let y = tx.y;
+    let results = await query('FindEmergencyBed');
+
+    let event = getFactory().newEvent('org.hackerton', 'EmergencyCarOccupied');
+    event.patient = tx.patient;
+    event.car = found.CarID;
+    event.patient_x = tx.x;
+    event.patient_y = tx.y;
+}

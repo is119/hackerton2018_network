@@ -38,6 +38,8 @@ participant EmergencyBed identified by BedID {
 asset Schedule identified by ScheduleID {
   o String ScheduleID
   --> Doctor doctor
+  o Integer start
+  o Integer end
 }
 
 asset Patient identified by PatientID {
