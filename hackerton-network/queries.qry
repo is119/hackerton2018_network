@@ -2,15 +2,15 @@
 */
 
 query FindEmergencyBed{
-  description: "Select all drivers older than 65."
+  description: "빈 응급실 좌석을 찾는다"
   statement:
       SELECT org.hackerton.EmergencyBed
           WHERE (isOccupied != true)
           ORDER BY [x DESC, y DESC]
 }
 
-query Q18 {
-    description: "Select all drivers aged older than PARAM"
+query FindSchedule {
+    description: "스케쥴이 빈 의사를 찾는다"
     statement:
         SELECT org.hackerton.Schedule
             /*WHERE (_$ageParam < age)
