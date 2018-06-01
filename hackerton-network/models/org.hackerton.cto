@@ -6,6 +6,8 @@ namespace org.hackerton
 
 participant Doctor identified by DoctorID {
   o String DoctorID
+  o String name
+  o String major
   --> Hospital hospital
 }
 participant Requester identified by RequesterID {
