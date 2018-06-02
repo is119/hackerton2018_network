@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.0.6
+VERSION=0.0.7
 
 composer archive create -t dir -n .
 composer network install -c admin@hackerton-network -a hackerton-network@$VERSION.bna

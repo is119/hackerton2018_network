@@ -73,7 +73,6 @@ transaction cancelEmergencyCarRequest {
 
 event EmergencyCarRequestCanceled{
   --> Requester requester
-  --> EmergencyCar car
 }
 
 transaction requestEmergencyBed {
