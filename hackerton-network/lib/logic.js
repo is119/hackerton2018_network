@@ -37,33 +37,24 @@ function cancelEmergencyCarRequest(tx) {
 function requestEmergencyCar(tx) {
     let x = tx.x;
     let y = tx.y;
-    let results = await query('FindEmergencyBed');
+    /*
+    let results = query('FindEmergencyBed').then();
 
-    let registry = await getParticipantRegistry('org.hackerton.EmergencyBed');
+    let registry = getParticipantRegistry('org.hackerton.EmergencyBed');
     found.isOccupied = true;
-    await registry.update(found);
+    registry.update(found);
 
     let found = find_nearest_emergency_car(list, x, y);
     if (!found) {
         throw new Error('좌석을 찾을 수 없음!');
     }
-
+    */
     let event = getFactory().newEvent('org.hackerton', 'EmergencyCarOccupied');
     event.patient = tx.patient;
     event.car = found.CarID;
     event.patient_x = tx.x;
     event.patient_y = tx.y;
     emit(event)
-}
-/**
- * 응급실 좌석 점유 검색 함수
- **/
-function find_nearest_emergency_car(list, x, y) {
-    var result = false;
-    for (let n = 0; n < list.length; n++) {
-        result = list[n]
-    }
-    return result;
 }
 
 /**
@@ -74,6 +65,7 @@ function find_nearest_emergency_car(list, x, y) {
 async function requestEmergencyBed(tx) {
     let x = tx.x;
     let y = tx.y;
+    /*
     let results = await query('FindEmergencyBed');
     let found = find_nearest_emergency_bed(list, x, y);
     if (!found) {
@@ -82,21 +74,11 @@ async function requestEmergencyBed(tx) {
     let registry = await getParticipantRegistry('org.hackerton.EmergencyBed');
     found.isOccupied = true;
     await registry.update(found);
-
+*/
     let event = getFactory().newEvent('org.hackerton', 'EmergencyCarOccupied');
     event.bed = found.BedID;
 
     emit(event);
-}
-/**
- * 응급실 좌석 점유 검색 함수
- **/
-function find_nearest_emergency_bed(list, x, y) {
-    var result = false;
-    for (let n = 0; n < list.length; n++) {
-        result = list[n]
-    }
-    return result;
 }
 
 /**
@@ -109,3 +91,27 @@ function bedOccupiedComplete(tx) {
     event.bed = tx.bed;
     emit(event);
 } //
+/**
+ * 응급실 좌석 점유 검색 함수
+ **/
+/*
+function find_nearest_emergency_car(list, x, y) {
+    var result = false;
+    for (let n = 0; n < list.length; n++) {
+        result = list[n]
+    }
+    return result;
+}
+*/
+/**
+ * 응급실 좌석 점유 검색 함수
+ **/
+/*
+function find_nearest_emergency_bed(list, x, y) {
+    var result = false;
+    for (let n = 0; n < list.length; n++) {
+        result = list[n]
+    }
+    return result;
+}
+*/
