@@ -23,9 +23,8 @@
  * @transaction
  */
 function cancelEmergencyCarRequest(tx) {
-    let event = getFactory().newEvent('org.hackerton', 'EmergencyCarOccupied');
+    let event = getFactory().newEvent('org.hackerton', 'EmergencyCarRequestCanceled');
     event.requester = tx.requester;
-    event.car = tx.car;
     emit(event)
 }
 
