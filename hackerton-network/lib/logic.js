@@ -48,8 +48,8 @@ function requestEmergencyCar(tx) {
         throw new Error('좌석을 찾을 수 없음!');
     }
     */
-    registry = getParticipantRegistry('org.hackerton.EmergencyCar')
-    .then(result, function(){
+    return getParticipantRegistry('org.hackerton.EmergencyCar')
+    .then(registry, function(){
         found = registry.get("1");
         let event = getFactory().newEvent('org.hackerton', 'EmergencyCarOccupied');
         event.patient = tx.patient;

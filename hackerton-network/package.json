@@ -1,6 +1,6 @@
 {
   "name": "hackerton-network",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "Docker-EmergencyRoom-Car-Requester Network",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/hackerton-network.bna",
