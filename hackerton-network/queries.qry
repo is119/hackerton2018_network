@@ -1,4 +1,5 @@
 /*
+
 */
 
 query FindEmergencyBed{
@@ -17,4 +18,13 @@ query FindSchedule {
                 ORDER BY [lastName DESC, firstName DESC]
                     LIMIT _$limitParam
                         SKIP _$skipParam*/
+}
+
+query SendIfSignalsGoing {
+	description: "Transaction이 클라이언트에게 원활하게 전송되는지 확인한다."
+	statement:
+		SELECT org.hackerton.EmergencyCar
+		  WHERE (isOccupied != _$AskOccupied)
+
+	
 }
