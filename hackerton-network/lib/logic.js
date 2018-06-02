@@ -48,14 +48,16 @@ function requestEmergencyCar(tx) {
         throw new Error('좌석을 찾을 수 없음!');
     }
     */
-    registry = await getParticipantRegistry('org.hackerton.EmergencyCar');
-    found = registry.get("1");
-    let event = getFactory().newEvent('org.hackerton', 'EmergencyCarOccupied');
-    event.patient = tx.patient;
-    event.car = found;
-    event.patient_x = tx.x;
-    event.patient_y = tx.y;
-    emit(event)
+    registry = getParticipantRegistry('org.hackerton.EmergencyCar')
+    .then(result, function(){
+        found = registry.get("1");
+        let event = getFactory().newEvent('org.hackerton', 'EmergencyCarOccupied');
+        event.patient = tx.patient;
+        event.car = found;
+        event.patient_x = tx.x;
+        event.patient_y = tx.y;
+        emit(event)    
+    });
 }
 
 /**
